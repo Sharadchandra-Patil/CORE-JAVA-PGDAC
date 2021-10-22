@@ -1,0 +1,155 @@
+Day 1
+1. Refer to "Installation Instructions" from day1-data\day1_help & complete.
+
+2. MUST go through "readme_day1"  from day1-data\day1_help\readmes & day1-data\day1_help\slides\PPTDay1.pdf
+
+3. Go through simple code samples from day1-data\code\src
+
+4. Solve 
+4.1 Accept 2 double values from User (using Scanner). Check data type.
+. If arguments are not doubles , supply suitable error message & terminate.
+If numbers are double values , print its average.
+eg : 
+Scanner sc=new Scanner(....);
+sop("Enter 2 double nos");// 123 abc
+if(sc.hasNextDouble())
+{
+//=> 1st no is of the type double
+   double d1=sc.nextDouble();
+   if(....)
+   {
+   } else 
+     sop("1st no is invalid");
+} else
+ sop("1st no invalid");
+
+
+
+4.2 Display food menu to user. User will select items from menu along with the quantity. (eg 1. Dosa 2. Samosa 3. Idli ... 10 . Generate Bill ) Assign fixed prices to food items(hard code the prices)
+When user enters 'Generate Bill' option(10) , display total bill & exit.
+eg : boolean exit=false;
+double totalBill=0.0;
+
+while(!exit)
+{
+   sop("options....");
+   sop("choose");
+   switch(sc.nextInt())
+  {
+    case 1: sop("Enter qty");
+    totalBill += (60*sc.nextInt());
+    break;
+   .....
+    case 10 : sop("total bill"+....);
+    exit=true;
+    break;
+  }
+}
+
+Day 2
+1. Complete pending work.
+
+2. Revise class work using today's code samples , sequence document & readmes
+
+3.Solve Tank assignment along with memory picture.
+
+What will be the output ?
+
+class Tank {
+  private int level;
+  Tank(int level)
+   {
+     this.level=level;
+   }
+  public void setLevel(int level1)
+  {
+    level=level1;
+  }
+  public int getLevel()
+  {
+    return level;
+  }
+}	
+
+public class Assignment {
+  public static void main(String[] args) {
+    Tank t1 = new Tank(10);
+    Tank t2 = new Tank(20);
+     s.o.p("1: t1.level: " + t1.getLevel() +
+          ", t2.level: " + t2.getLevel());//10 20
+    t1 = t2;
+    s.o.p("2: t1.level: " + t1.getLevel() +
+          ", t2.level: " + t2.getLevel());//20 20
+    t1.setLevel(27);
+     s.o.p("3: t1.level: " + t1.getLevel() +
+          ", t2.level: " + t2.getLevel());//27 27
+    t2.setLevel(t1.getLevel()+10);
+     s.o.p("4: t1.level: " + t1.getLevel() +
+          ", t2.level: " + t2.getLevel());//37 37
+  }
+}
+
+4. Solve this (Will be discussed in detail in the lab session)
+
+Modify box class , to supply following functionality & test it using a separate class TestBoxFunctionality.java
+
+4.1 Create Cube
+TestBoxFunctionality.java
+User will supply side of the cube. Create a cube from it.
+Hint : Add overloaded constructor in Box class : single argument 
+
+4.2. Add a method to Box class to compare equality of 2 boxes & test it.
+Hint : 2 boxes are equal if & only if , their dimensions are exactly the same.
+eg : box1 : 10 20 30
+box2 : 20 10 30
+What should be method declaration in Box class ?
+boolean isEqual(Box anotherBox)
+{
+ ......
+}
+From Tester class 
+box1 , box2
+How to invoke the method ?
+box1.isEqual(box2)
+
+
+4.3 Add a method to Box class to return a new Box with modified offset in dimensions & test it with the tester.
+eg : Suppose client has ordered 1st Box : 10 20 30
+Clnt orders another new box : with ref to 1st box : 3 -4 -2
+App should create another NEW BOX :13 16 28
+eg : Box box1=new Box(sc.nextDouble(),sc.nextDouble(),sc.nextDouble());
+sop("Enter the offsets w.r.t 1st box: width offset d offset h offset");
+Box box2=box1.createNewBox(....);
+
+
+4.4 Display color of the box , having larger volume.
+Hint : add color as state + add getter
+
+Day 3
+1. Revise class work by referring to day3 code samples.
+(So now there should not be any pending work!)
+
+2. Solve this (without using IDE)
+2.1 Create a class Point2D , in package - "com.app.geometry"   : for representing a point in x-y co-ordinate system.
+
+2.2 Create a parameterized constructor to init x & y co-ords.
+
+2.3 Add a method to return string form of  point's x & y co-ords
+Hint :  public String getDetails()) 
+
+2.4 Add isEqual method to Point2D class :a boolean returning method : must return true if n only if both points are having same x,y co-ords or false otherwise.
+
+2.5 Add calculateDistance method to calculate distance between current point and specified point & return the distance to the caller.
+Hint : Use distance formula . Use java.lang.Math class methods --sqrt, pow etc.
+
+2.6 Write TestPoint class , in package "tester" , with a main method
+Accept co ordinates of 2 points from user (Scanner) --to create 2 points (p1 & p2)
+
+2.7 Use getDetails method to display point details.(p1's details & p2's details)
+
+2.8 Invoke isEqual & display if points are same or different (i.e p1 & p2 are located at the same position)
+
+2.9 If they are not located at the same position , display distance between p1 & p2
+
+3. Discuss ready code : 
+param_passing

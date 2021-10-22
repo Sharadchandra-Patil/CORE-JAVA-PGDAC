@@ -1,0 +1,107 @@
+Today's Topics
+
+Revise with mem pics : array of references
+static initializer block
+Enter Inheritance & later Polymorphism
+
+Revise
+1. What will be the memory pic n o/p?
+Point2D[] points;//points : method local var ,reference (array type of the ref) : stack
+points=new Point2D[3];//1. cls loading : [Lcom.app.geometry.Point2D 2. array obj : heap 
+1. CP ,2. length=3, 3 more slots : null 3. ref is reted to the caller : points
+points ---> array object
+
+int value=10;
+for(int i=0;i<points.length;i++) {
+ points[i]=new Point2D(value,value+10);//for 1st iteration : class loading : com.app.geometry.Point2D,
+object : heap --CP , 10,20, ref is stored : in array object (heap)
+ value++;
+}
+points ---> array : index 0 : ref1 --> 1st point,index 1 : ref2 --> 2nd point,index 2 : ref3 --> 3rd point
+How many objects ? 4 (1 : array , 3 Point2D objects)
+
+for(Point2D p : points)//p=points[0] ---> 1st point , p=points[1] , p=points[2]
+ sop(p.getDetails());//10 20 , 11 21 , 12 22
+
+2. What will happen ?
+Point2D[] points=new Point2D[3];//1 : array
+int value=10;
+for(Point2D p : points) {//p=points[0]=null,p=points[1]=null
+ p=new Point2D(value,value+10);//p--->point's 1st obj, points[0] = null, p---> 2nd point obj,p-->3rd point
+ value++;
+}
+//p : no longer accessible :how many objs marked for GC : 3 , points[0],points[1],points[2]: null 
+for(Point2D p : points) //p=points[0]=null
+ sop(p.getDetails());//run time err : java.lang.NullPointerException
+
+3. Dynamic initialization of array of primitive types
+int[] ints= {10,20,30,40,50};
+
+
+4. Dynamic initialization of array of references
+Point2D[] points={new Point2D(10,20),new Point2D(50,100),new Point2D(-50,70)};
+
+
+5. Revise API --java.util.Arrays : helper class for array handling
+Method 
+public static String toString(int[] a)
+Returns a string representation of the contents of the specified array.
+eg : int[] ints= {10,20,30,40,50};
+sop(Arrays.toString(ints));//[10,20,30,40,50]
+
+6. static keyword
+eg : 
+import static java.lang.Math.*;//:for accessing all static members of Math class
+import java.util.*;//for accessing all types(classes) from the java.util package
+sop("Value of PI"+PI);//no javac err 
+
+Q : Emp class 
+Given : class Emp
+{
+ private int id;
+ private String name;
+ private double salary;//non static data members : instance var
+ private static int noOfEmps;//static data member
+}
+If 10 emps are hired(i.e 10 emp objects are created , how many copies of the following will be created ?)
+
+id :10
+name : 10
+salary : 10
+noOfEmps : 1
+
+7. Revise static initializer block
+solve ready code sample
+
+
+8. Inheritance 
+refer to "readme inheritance n polymorphism.txt" from today's help.
+Person-Student-Faculty scenario (constructor invocation in inheritance hierarchy)
+
+4.1 What is inheritance  n Why 
+4.2 Real life Examples 
+4.3 Types
+4.4 constr invocation in inheritance hierarchy
+super keyword
+4.5 Show details : via toString : method overriding
+
+
+Objective : Arrange an event to invite students n faculties
+(eg : EventOrganizer app : tester --main / scanner)
+Prompt user for event capacity.
+Create suitable data structure to hold the participant details
+eg : Person[] participants=new Person[sc.nextInt()];//100
+int counter=0;
+Options 
+1. Register Student : 
+case 1 : boudary checking
+space : sop("Enter Student details .....");
+participants[counter] =new Student(.....);//NO javac err : since Student IS-A Person : YES(extends) --implicit conversion : up casting
+
+
+
+
+
+2. Register Faculty : 
+3. Display participant details : for-each 
+10. Exit

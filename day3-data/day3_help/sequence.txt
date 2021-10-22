@@ -1,0 +1,95 @@
+Today's agenda 
+
+Introduction to Garbage Collection
+Packages & classpath
+Enter Eclipse IDE
+Acces Specifiers
+
+
+
+Revision
+
+Answer this 
+What will data type of result of arithmetic operation between
+1. byte & byte : int
+2. byte & short : int
+3. short & short : int
+4. int & long : long
+5. long & float : float
+6. float & double : double
+7. byte/short/int....& double : double
+
+
+JVM Architecture
+1. Class loader : locate n load required classes in the JVM's memory
+2. Run time data areas(memory model) : 
+2.1 Method area : shared resource (1 / JVM). Class's meta data info + allocate mem for static data members, Metaspace : directly allocated from computer's native memory
+2.2 Heap : shared resource (1 / JVM). Java object heap : state of the object(non static data members --instance vars)
+
+2.3 Stacks : Java stack created / thread.
+stack frames --method local info (eg : args , local vars, ret values). Created 1 / method invocation
+main() ---> m1() --> m2()
+2.4 PC Registers : 1/ thread
+
+2.5 Native method stacks : 1/ thread
+
+System threads created by JVM :  main , GC
+
+3. Execution Engine : Interpreter, Hot spot profiler,JIT Compiler(native code cache), GC
+
+
+Revise class , object & memory picture
+What will happen ?
+Box b1;
+b1=new Box(1,2,3);
+s.o.p(b1.getBoxDimensions());
+s.o.p(b1.getBoxVolume());
+Box b2=b1;
+s.o.p(b2.getBoxDimensions());
+b1=null;
+s.o.p(b1.getBoxDimensions());
+s.o.p(b2.getBoxDimensions());
+b2=null;
+s.o.p(b2.getBoxDimensions());
+What will happen to the memory occupied in the heap ?
+
+
+Enter Garbage Collection : refer "Regarding GC " : 1st half.
+What will happen ?
+Box b1=new Box(10,20,30);//0 marked for GC
+b1=new Box(3,4,5);//b1 ---> 2nd Box obj(3.0,4.0,5.0)  : 1st box obj is marked for GC
+Are there any candidates marked for GC ? : YES : 1
+
+
+Pointers vs java references
+
+Similarity -- Pointer & reference --hold an address to the object created on heap.
+Difference -- To add robustness to the language ,
+pointer arithmatic is not allowed in java.
+
+reference --- holds internal representation of address --
+
+eg : 
+int data =100;
+data++;
+Box b1=new Box(1,2,3);
+b1++;//javac error
+String s=new String("hello");
+s ++;//javac error
+
+
+Assignment status ????
+Understand passing ref type of variable as parameter  n returning reference from the method
+Confirm the understanding with : hashCode() method
+
+
+1. Packages & access specifiers
+refer to "regarding packages"
+Objective : Place Box class under package "com.sunbeam.core" n place TestBoxFunctionality under "com.tester"
+
+2. refer to the diagram "Access specifiers" & "Understanding access specifiers" 
+Set it up & confirm the table.
+
+
+2. Enter Eclipse IDE
+
