@@ -1,0 +1,108 @@
+Abstraction
+Abstract methods , classes
+Interfaces
+
+
+Revise
+What is polymorphism ?
+
+Which are 2 types of polymorphism ?
+
+How to achieve ?
+
+Rules of method overloading --same method name, signature (method args) : different , ret type ignored by javac
+
+Rules of method overriding  : same method name, signature (method args) : same , ret type : Same or co variant, access specs : same or wider
+
+Which methods can be overridden , in general ? : virtual methods 
+Is there supporting keyword in java ? : no virtual keyword
+
+Which methods are bound early (i.e method binding will be resolved by javac as per type of the reference) ? : private , static , final , overloaded methods
+
+Which method are bound late  (i.e method binding will be resolved by JVM as per type of the instance) ? methods that are not --private , static , final , overloaded methods
+
+For which methods  run time polymorphism will take place ? 
+Options
+Early bound or Late bound : Late bound
+
+
+Refer to Fruit's assignment
+
+What will happen ? 
+Fruit f=new Apple(...);//no javac err : up casting
+f.taste();//no javac err  : since Fruit has taste() ,JVM :  Apple's taste: sweet n sour
+f=new Orange(...);
+f.taste();//no javac err  : since Fruit has taste() ,JVM :  Orange's taste:  sour
+f=new Mango();//1
+f.taste();//2 : run time poly.
+
+Given :
+Fruit[] basket={new Apple(...),new Orange(...),new Mango(...)};
+
+How will you display tastes n details(nm,clr,wt) of all the fruits in the basket ?
+for(Fruit f : basket)
+{
+   sop(f);
+   sop(f.taste());
+}
+
+Solve 
+Fruit f=new Mango();
+//Invoke pulp() method
+//f.pulp();//javac err
+//downcasting
+((Mango)f).pulp();//explicit down casting is MUST
+
+f=new Orange(..);//up casting
+((Mango) f).pulp();//run time err : java.lang.ClassCastException --Orange can't be cast into Mango 
+
+Any solution ?  : instanceof : RTTI
+f=new Orange(..);//up casting
+if(f instanceof Mango)
+((Mango) f).pulp();
+else ("Can't be pulped!!!!!!");
+
+Important : 
+When will you need to apply downcasting?
+When super class ref ----> sub class object (indirect referencing) & you need to invoke sub class specific functionality (eg : pulp())  ---downcasting is required.
+
+Any probable run time error ?? : YES --java.lang.ClassCastException
+
+Before down casting : check using instanceof 
+--------------------------------------------------------------------
+(abstraction)
+
+Shapes example
+eg : Shapes scenario
+Solve this
+
+1. BoundedShape -- x,y (state) 
+public String toString()
+public double area();
+
+2. Circle -- x,y,radius
+Method --public double area()
+public String toString()
+
+3. Rectangle -- x,y,w,h
+Method --public double area()
+public String toString()
+
+eg : In a Tester , store different type of shapes in the suitable array.
+BoundedShape[] shapes={new Circle(20,40,12.5),new Rectangle(30,40,10,15.7)};
+Display Shape details n area.
+for(BoundedShape s : shapes)
+{
+  sop(s);
+  sop(s.area());
+}
+ 
+final keyword
+
+Enter Interfaces
+
+
+
+
+
+

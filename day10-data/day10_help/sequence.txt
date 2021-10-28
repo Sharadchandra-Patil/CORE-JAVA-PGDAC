@@ -1,0 +1,91 @@
+Today's Topics
+overriding of equals method
+Solving assignment
+var-args
+Java Enums
+Wrapper classes
+Association : HAS-A relationship
+
+
+1. Solve
+
+String s="Hello";//literal string
+s.toUpperCase();//non literal object
+s.concat("12345");//non literal object ---> Hello12345 , literal string obj : "12345"
+sop(s);//Hello
+String s1="testing strings";//literal string
+String s2=new String(s1);//non literal s2 ----> heap ("testing strings")
+sop(s1==s2);//f
+sop(s1.equals(s2));//t
+String s3="He"+"llo";//literal strings : He , llo : 2 , s3 ----> literal string
+String s4="He".concat("llo");//s4 ---> non literal
+String s5="hello";//adds new literal string s5----> literal string
+sop(s==s3);//t
+sop(s==s4);//f
+sop(s==s5);//f
+
+
+2. Solve
+public static void main(String[] args) {
+		String s1="hello";//s1 --> literal
+		String s2="hello";//nothing
+		String s3=new String(s1);//non literal 
+		String s4=s3.intern();//won't add any new literal string : since "hello" alrdy exists
+		String s5="he"+"llo";//won't add any new literal string : since "hello" alrdy exists
+		String s6="he".concat("llo");//new non literal 
+		System.out.println(s1==s2);//t
+		System.out.println(s1==s3);//f
+		System.out.println(s1==s4);//t
+		System.out.println(s1==s5);//t
+		System.out.println(s1==s6);//f
+		String s7=new String("Hello");//how many string objects are created in this line? : 2
+		String s8=new String("hello");//how many string objects are created in this line? : 1
+
+	}
+
+Revise Date Time Handling
+java.util.Date : represents Date n time both , till precision msec.
+Constrs : 
+Date() : Creates date class instance : current date n time 
+Date(long msec) : Creates date class instance : that represents date n time , of msecs elapsed after Epoch(1st Jan 1970)
+Methods : toString , before ,after,compareTo,equals
+eg : d1.compareTo(d2) :  -1 => d1 before d2
+0 => d1.equals (d2)
+1 => d1 after d2
+
+
+eg How to accept DoB(Date) of a customer ?
+Steps
+1. Create instance SDF : java.text
+SDF sdf=new SDF("yyyy-MM-dd");//single copy of SDF : static data member : Customer class
+2. Parsing (string --> Date)
+Date dob=sdf.parse(sc.next());//ParseExc : chked exc : must be handled!
+3. Customer 's toString
+String formattedDateString=sdf.format(dob);
+
+---------------------------
+Solve Vehicle's assignment based on equals
+
+Add More validation rules (solve 2nd assignment)
+
+var-args
+
+Enum : Vehicle Category
+eg : Vehicle HAS-A Category
+
+
+Wrapper classes in Java
+
+Association : HAS-A
+--------------------------
+Reg Expression Pattern examples
+String emailPattern = "[a-z]+[A-Z]*[0-9]*@[a-z]+.com";
+String pwdPattern="((?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[#@$*]).{5,20})";
+
+
+
+
+
+
+
+

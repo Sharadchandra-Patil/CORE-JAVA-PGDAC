@@ -1,0 +1,135 @@
+Today's Topics
+
+Custom Exceptions
+String Handling
+Date Time Handling 
+Object's equals method
+Detailed application using all of above concepts.
+
+
+Revise
+
+What is exception ? --run time error , detected by typically JVM's main thread 
+
+Why exception handling ?
+1. To continue with the program execution , even after run time errs(eg :invalid inputs,B.L failures,validation failures, file not found, invalid casting....)
+2. To separate B.L (try block) from error handling logic(catch)
+
+Flow 
+Eg. Trigger : div by 0 ---> chks type of the err --->throw new AE("/ by 0");
+
+JVM chks ---matching exc handler(catch) exists -- NO --supplies a def handler --Aborts : prints --name , err mesg , stack trace (location details)
+
+YES --try block aborts --JVM invkes MATCHING catch block --- code continues..
+
+throw Throwable instance; --syntax --- currently used by JVM to raise system excs(eg : AE, AOBExc, NPE,ClassCastExc.....,IOException, SocketExc, SQLExc....)
+
+
+Inheritance hierarchy of exc handling classes
+Throwable <--- Error , Exception
+Exception <-----RunTimeException <----un checked excs (eg : AE, AOBExc, NPE,ClassCastExc.....)
+Exception <----- IOException, SocketExc, SQLExc , InterruptedException : checked excs
+
+
+try-catch keywords
+checked vs un checked exceptions
+who doesn't differentiate between checked vs un checked exceptions --JVM
+
+who differentiates n how ? : Javac differentiates : javac forces handling of the chked excs to prog
+2 ways 
+Actual handling : try-catch
+Exc handling delegation : throws 
+
+throw vs throws
+throw :used to  raise the  exception(JVM : system excs , Prog : custom exc), appears in method def.
+syntax : throw Throwable instance;
+
+throws : meant for javac , appears in method declaration 
+eg : public void show() throws IOException,InterruptedException
+{
+ ......
+}
+Meaning : show() : may throw the exc(possibility) , curnt method is NOT handling the exc.
+so its' caller should handle.
+
+when is adding throws keyword mandatory : un handled(no catch) n checked exc
+o.w : javac error
+
+finally : always executed(i.e in case of no exc as well as excs/ method rets) except : JVM termination(System.exit(0))
+typical use case  : cleaning up of non java resources(eg : File , socket , db handles, Std i/p)
+
+OR
+try-with-resources
+eg : try(Scanner sc=new Scanner(System.in);
+ Connection cn=....;
+)
+{
+.....
+} //cn.close ,sc.close()
+catch(Exception e)
+{
+ ....
+}
+Can you open any Resource(class instance) using try-with-resources block 's header? NO 
+Only those class instances : whose class has imple . : java.lang.AutoCloseable
+
+
+Custom exceptions
+objective : Accept speed of a vehicle from user (scanner) --highway
+min speed : 30
+max speed : 80
+
+In case of speed outside the range --Prog will have to detect the err --create instance of user defined exc class --explicitly throw custom exc to the code. The alteration in flow will be managed by JVM.
+
+eg : if (speed < 30)
+        throw new SpeedOutOfRangeException("U r driving slow!!!!!");
+   .......
+
+
+Steps
+1.Create custom exception class
+1.1  Add parameterized constr : to init err mesg
+
+2. Create a separate class  eg :  SpeedUtils --
+add a static method for validation the speed
+
+3. Create Tester : UI --scanner --accept the speed n simply call validateSpeed of the SpeedUtils  class
+
+
+4. String Handling
+4.1 Immutability of strings
+4.2 == vs equals
+4.3 literal vs non literal string
+4.4 API
+
+5. Date Time Handling 
+
+6. Solve Vehicle equality assignment
+Problem :
+Create a class Vehicle , under the package : com.app.vehicles , to represent any vehicle. 
+Supply tight encapsulation
+state(data members)  : chasisNo : int , color : String , price : double
+chasisNo  MUST be unique (non duplicate) for any vehicle (primary Key : unique ID)
+Get  complete state : toString
+
+Create a class TestVehicle under the package "tester"
+Accept details of 2 vehicles from user . 
+Display "SAME" or "DIFFERENT" , in case of same or different reg nos.
+
+7. Objective : Use exception handling , string handling & Date in vehicle showroom based scenario
+Vehicle's  state(attributes) --chasisNo : int , color : String ,category price : double , manufactureDate
+Add validation rules for the inputs : 
+chasisNo id unique
+category  : Petrol , Diesel, EV , Hybrid , CNG
+manufactureDate : in this financial year (1st Apr 2021 to 31Mar 2022) 
+Create a tester as Showroom.
+Options
+1. Add Vehicle 
+Apply all validation rules . In case of success , add the vehicle in the showroom
+Otherwise raise custom exception , alert user using exc handling.
+
+2. Display All Vehicles
+
+3. Exit
+
+

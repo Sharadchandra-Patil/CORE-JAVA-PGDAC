@@ -1,0 +1,176 @@
+Today's topics
+Polymorphism
+Abstraction
+
+Revise
+Why Inheritance : reduces redundacny n enhances re usability
+Types : single,multi level , hierarchial , multiple(not supported)
+Discuss Diamond problem
+
+constr invocation in inheritance hierarchy : refer to diag.
+super --keyword in java
+
+super keyword usages
+1. To invoke immediate super cls's MATCHING  constr (eg : super(firstName,lastName);) : accessible from sub class constructor
+
+2. To access super cls's accessible members (eg : super.toString())
+
+Important statements
+Sub class IS A super class + something more(addtional data members + methods) + something modified(behaviour : methods : method overriding)
+
+java.lang.Object : universal super class of all java classes
+public String toString() : rets F.Q cls Name @ hashcode
+What's the need of overriding toString : to replace hashCode returning version by actual object details
+
+
+eg : 
+package bank;
+public class Account
+{
+// state : acctNo , name, balance,type : instance vars (=non static data members)
+//constr
+//override toString
+public String toString()
+{
+ return "Bank Account "+acctNo+.....;
+}
+  
+}
+In Tester
+Account a1=new Account(...);
+sop(a1);//what will be o/p before ? : bank.Account@354354
+what will be o/p after overriding : acct details
+
+Solve 
+1.  Upcasting
+eg : Object o=new Faculty(......);//no javac err : up casting(implicit conversion done by javac : IS-A)
+sop(o);//what will it call internally : sop(o.toString());----PrintStream --println(Object ref) --String.valueOf(Object ref) -- ref==null ? prints null : ref.toString()
+what will happen ? no javac err , since Object class DOES have toString
+JVM : invokes toString method on :  Faculty => run time polymorphism
+
+
+IMPORTANT : Javac resolves method binding by type of the reference BUT JVM resolves it by type of the instance it's referring to .
+
+Solve :
+Fruit : super class
+public String taste()
+{
+ return "No specific taste";
+}
+Mango extends Fruit
+{
+ override : to return "sweet"
+}
+Orange extends Fruit
+{
+ override : to return "sour"
+}
+Alphonso extends Mango
+{
+   override : to return"sweet n juicy"
+}
+Apple extends Fruit 
+{
+   override : to return"sweet n sour"
+}
+
+Suppose you have also overridden toString in Fruit class : to return name , color & weight of the fruit.
+
+
+Solve
+What will happen ?
+Fruit f=new Mango();//no javac err : up casting
+f.taste();//no javac err , since Fruit class has taste() ---JVM --invokes sub class(overridng) "sweet"
+sop(f);//javac : Fruit , JVM : invokes toString() on Mango cls instance
+
+f=new Orange(...);
+f.taste();
+sop(f);
+
+f=new Alphonso();
+f.taste();
+sop(f);
+
+Object o=f;
+sop(o);//JVM : toString : Alphonso
+
+
+
+
+Tester :
+How will you create a basket of fruits , with 1 apple , 2 alphonso , 1 orange : using dynamic init of array ?
+
+How will you display tastes of all fruits ?
+
+
+
+
+Enter polymorphism formally : refer to readme inheritance poly.
+
+Refer to method overloading vs method overriding
+
+Identify the rules.
+Examples of method overloading : print / println methods
+
+Example of Method overriding
+eg : toString
+
+Java Annotation
+eg : @Override annotation
+
+With simple example : Object , Person , Student,Faculty
+2. Event Organizer app
+ Suitable data structure : array of references : 
+Type of array : Person[]
+
+Menu :
+1 : Register Student
+2. : Register Faculty
+3. Display all participant details 
+100. : Exit
+
+4. Display specific participant details
+i/p : seat no
+
+3. Need of downcasting
+Objective : Executing sub class specific functionality.
+Add a new method "study" in Student class & "teach" in Faculty class
+Option 4 : User i/p : seat no
+Check if seat no is valid .
+In case of valid seat no  --- If it's a Student , invoke study method , if it's a Faculty invoke teach method
+
+4. instanceof keyword
+
+5. Enter abstraction
+
+eg : Shapes scenario
+Solve this
+
+1. BoundedShape -- x,y (state) 
+public abstract double area();
+
+public String toString()
+
+2. Circle -- x,y,radius
+Method --public double area()
+public String toString()
+
+3. Rectangle -- x,y,w,h
+Method --public double area()
+public String toString()
+
+eg : In a Tester 
+BoundedShape[] shapes={new Circle(20,40,12.5),new Rectangle(30,40,10,15.7)};
+for(BoundedShape s : shapes)
+{
+  sop(s);
+  sop(s.area());
+}
+
+-------------------------
+a1 b1 2020 java 23456 87
+a2 b2 2021 JS 12345 85
+a3 b3 10 java,db,react
+a4 b4 20 java,.NET
+
+

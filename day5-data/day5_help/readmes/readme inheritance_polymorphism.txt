@@ -1,6 +1,6 @@
 Regarding inheritance
 
-The process by which one class acquires the properties(data members) and functionalities(methods) of another class is called inheritance.
+The process by which one class acquires the properties(data members/feilds) and functionalities(methods) of another class is called inheritance.
 
 In OOP, we often organize classes in hierarchy to avoid duplication and reduce redundancy. The classes in the lower hierarchy inherit all the variables (attributes/state) and methods (dynamic behaviors) from the higher hierarchies. 
 
