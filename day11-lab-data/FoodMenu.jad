@@ -1,0 +1,64 @@
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   FoodMenu.java
+
+package com.app.core;
+
+
+public final class FoodMenu extends Enum
+{
+
+    private FoodMenu(String s, int i, int price)
+    {
+        super(s, i);
+        this.price = price;
+    }
+
+    public int getPrice()
+    {
+        return price;
+    }
+
+    public void setPrice(int price)
+    {
+        this.price = price;
+    }
+
+    public String toString()
+    {
+        return (new StringBuilder(String.valueOf(name()))).append("@").append(price).toString();
+    }
+
+    public static FoodMenu[] values()
+    {
+        FoodMenu afoodmenu[];
+        int i;
+        FoodMenu afoodmenu1[];
+        System.arraycopy(afoodmenu = ENUM$VALUES, 0, afoodmenu1 = new FoodMenu[i = afoodmenu.length], 0, i);
+        return afoodmenu1;
+    }
+
+    public static FoodMenu valueOf(String s)
+    {
+        return (FoodMenu)Enum.valueOf(com/app/core/FoodMenu, s);
+    }
+
+    public static final FoodMenu NOODLES;
+    public static final FoodMenu RICE;
+    public static final FoodMenu SOUP;
+    public static final FoodMenu SNACKS;
+    private int price;
+    private static final FoodMenu ENUM$VALUES[];
+
+    static 
+    {
+        NOODLES = new FoodMenu("NOODLES", 0, 60);
+        RICE = new FoodMenu("RICE", 1, 100);
+        SOUP = new FoodMenu("SOUP", 2, 120);
+        SNACKS = new FoodMenu("SNACKS", 3, 50);
+        ENUM$VALUES = (new FoodMenu[] {
+            NOODLES, RICE, SOUP, SNACKS
+        });
+    }
+}

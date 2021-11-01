@@ -14,7 +14,7 @@ public class FoodBillGenerator {
 			boolean exit = false;
 			StringBuilder availableItems = new StringBuilder("Menu : \n");
 			for (FoodMenu m : values())
-				availableItems.append(m + " ");
+				availableItems.append(m + " \n");
 			
 			while (!exit) {
 				System.out.println(availableItems);

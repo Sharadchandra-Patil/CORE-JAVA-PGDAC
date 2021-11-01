@@ -1,0 +1,57 @@
+Today's topics
+1. Complete pending work
+2. Iterator , ListIterator , Exceptions associated.
+3. Sorting in Java
+
+
+Revise
+Collection Framework Overview
+What is it ? : Readymade implementation of dynamic data structures(List,Set,Map) + DSA(data structure algorithms) 
+
+Why ? : Supports dynamic data structures, insertion /deletion , searching /sorting , CRUD operations
+
+Inheritance Hierarchy
+(refer to diagram)
+Will you be able to create a populated AL from
+1. AL , LL , Vector
+2. HS, LHS,TS
+3. HM , LHM ,TM
+Ans : 1 , 2
+
+Which of the following will cause a structural modification of the list?(modifying size)
+1. add
+2. remove / removeAll
+3. retainAll
+4. set
+Ans : 1 ,2 ,3
+
+eg : l1 : [1,2,3,4,5]
+l2 : [3,4]
+l1.retainAll(l2) => l1 : 3 4
+
+List Features & implementation classes
+
+
+1. Complete pending objectives
+1.1. Delete vehicle details
+i/p : chasis no
+
+1.2 Apply discount to all vehicles manufactured before a specific date n category
+i/p :  date n category n discount
+Hint : for-each :search
+
+1.3 Display vehicle chasis no n price  , of all the vehicles dispatched to a specific city
+i/p : city
+Hint : for-each :search
+
+
+2. Create a simple tester to understand :
+Iterator , ListIterator , Exceptions associated.
+
+3. Sorting related objectives
+
+9. Sort vehicles as per chasis no (asc order)
+
+10. Sort vehicle as per price (desc order)
+
+

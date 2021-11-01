@@ -14,8 +14,8 @@ public class Outer {
 	// static method
 	public static void test1() {
 		System.out.println("outer's static method " + j);
-	//	Inner in=new Inner(3456);
-		Outer.Inner in=new Outer(11).new Inner(22);
+		Inner in=new Outer(11).new Inner(3456);
+		//Outer.Inner in=new Outer(11).new Inner(22);
 		System.out.println(in.l);
 		
 	}

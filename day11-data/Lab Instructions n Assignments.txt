@@ -1,4 +1,4 @@
-Day 1
+ Day 1
 1. Refer to "Installation Instructions" from day1-data\day1_help & complete.
 
 2. MUST go through "readme_day1"  from day1-data\day1_help\readmes & day1-data\day1_help\slides\PPTDay1.pdf
