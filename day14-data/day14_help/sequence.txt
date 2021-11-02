@@ -1,0 +1,107 @@
+Today's Topics
+Continuation of Sorting on Java 
+ArrayList Vs LinkedList
+Wild Card in generics & bounds
+
+
+Assignment status ?
+Solve 
+1. Customer Login
+Tester
+AL<Customer> customers=populateData();
+case 1: //customer reg
+break;
+case 2 : //customer login
+sop("Enter credentials : email pwd");
+Customer c=validateUser(sc.next(),sc.next(),customers);
+sop("Login success !, your curnt details "+c);
+
+
+CollectionUtils / ValidataionRules
+public static Customer validateUser(String email,String pass,AL<Customer> custs) throws CustomerHandlingExc
+{
+  //findByEmail
+   Customer c=findByEmail(email,custs);
+//=>email validated , now validate pwd
+   if(c.getPassword().equals(pass))
+     return c;
+  throw new CustomerHandlingExc("invalid pwd....");
+}
+
+2. Display all customer details , with specified adhar card location.
+i/p : card location
+case 2 : sop("Enter card location");
+String location=sc.next();
+for(Customer c : customers)
+  if(c.getAdharCard() != null)
+   if(c.getAdharCard().getLocation().equals(location))
+    sop(c);
+-------------------------
+Revision
+Sorting in Java
+
+Which are 2 ways of sorting ? Natural (Implicit / Internal) Ordering : sorting criteria is kept within UDT(user defined type) : Generic Type of the  list --java.lang.Comparable<Type Of the List>
+
+Custom ordering : Custom ordering (Explicit/ External) Ordering : sorting criteria is kept outside (separate class/ano. innner class/lambda expressions) --java.util.Comparator<Type Of the List>
+
+
+
+Steps for 1. Sort Vehicles as per the chasis no
+1. Vehicle implements Comparable<Vehicle>
+
+2.implement :
+@Override
+public int compareTo(Vehicle anotherVehicle)
+{
+  //sorting key : chasisNo --String
+   return this.chasisNo.compareTo(anotherVehicle.chasisNo);
+}
+
+3. java.util.Collections : helper class containing static utility methods
+public static void sort(List<T> list)
+eg : Collections.sort(customers);
+Which sorting algo : Tim's sorting algo (iterative merge sort)
+What will it call internally ? Invokes Vehicle's Natural ordering(N.O) --compareTo : comparison func.
+eg : [v1,v2,v3,v4.......v100]
+v1.compareTo(v2) < 0 or 0 : not swapped
+> 0 : swap
+
+
+2. Sort Vehicles as per the price
+When u need multiple sorting criteria : that too w/o touching core class (UDT :eg : Vehicle)
+keep sorting criteria : external 
+Custom ordering
+
+
+3. Sort Vehicles as per the manufacture date n price
+C.O
+3.1 Create another cls : imple Comaprator<Vehicle>
+3.2 compare : date is different : ret
+date same : compare by price
+3.3 Collections.sort(list,new VehicleDatePriceComparator());
+//instance of the cls that imple Comparator
+
+4. Sort vehicles as per category
+Instead of writing a separate class imple Comparator(instead of repeating) , can we embed it in the inner class ? YES
+Special variety of non static nested class : anonymous inner class (=nameless inner class , where entire cls def. is embedded withing a single java statement)
+4.1 Collections.sort(vehicles,new Comparator<Vehicle>() //instance of the cls that imple Comparator
+ {//inner cls begin
+    @Override
+     public int compare(Vehicle v1,Vehicle v2)
+     {
+       return v1.getCategory().compareTo(v2.getCategory());
+     }
+ }//inner cls over
+);
+
+
+4. LinkedList
+Refer to : Collection Framework Overview diagram.
+diagrams : Types of linked lists , node , insert n delete operations
+Refer to readme
+Solve ready code samples.
+Compare ArrayList Vs LinkedList
+
+
+5. More in generics
+Refer to : generics sequence

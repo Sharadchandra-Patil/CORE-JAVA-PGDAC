@@ -1,0 +1,51 @@
+in hashCode
+Aded true
+in hashCode
+in emp equals
+Aded true
+in hashCode
+in emp equals
+in emp equals
+Aded true
+in hashCode
+in emp equals
+in emp equals
+in emp equals
+Aded false
+Emp Set [Emp [id=101, name=abc1, salary=1000.0], Emp [id=10, name=abc2, salary=1000.0], Emp [id=50, name=abc3, salary=1000.0]]
+3
+in emp equals
+false
+in emp equals
+false
+in emp equals
+true
+in hashCode
+in hashCode
+in hashCode
+in hashCode
+10 10 10 10
+----------------------------------------------------------
+in hashCode
+Aded true
+in hashCode
+Aded true
+in hashCode
+Aded true
+in hashCode
+in emp equals
+Aded false
+Emp Set [Emp [id=50, name=abc3, salary=1000.0], Emp [id=101, name=abc1, salary=1000.0], Emp [id=10, name=abc2, salary=1000.0]]
+3
+in emp equals
+false
+in emp equals
+false
+in emp equals
+true
+in hashCode
+in hashCode
+in hashCode
+in hashCode
+101 10 50 50
+

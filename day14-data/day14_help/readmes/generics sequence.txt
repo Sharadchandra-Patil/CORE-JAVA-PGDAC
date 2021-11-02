@@ -1,0 +1,131 @@
+1. Generic Method 
+What is it ? A Method which has it's own type parameter.
+It can exist in a non generic class.
+
+Generic method example : Arrays.toList
+java.util.Arrays class
+public static <T> List<T> asList(T... a)
+Generic method from a non generic class(Arrays)
+i/p : T... a : This method can accept : no args or T[] or T t1,T t2....
+o/p : FIXED size list
+How will you use it for getting a fixed size List<Integer> ?
+------------------------
+
+2. More about generic syntax : ? , extends ,super
+Given :
+Emp <---- Mgr <----SalesMgr
+Emp <---- Worker <---- TempWorker
+
+
+What will happen ?
+Emp e =new Mgr();//up casting
+e.computeSalary();//mgr's sal
+e=new TempWorker();//up casting
+e.computeSalary();//temp worker's sal
+
+
+
+ArrayList<Emp> l1=new ArrayList<>();//what's the inferred type of the RHS ? : Emp
+ArrayList<Mgr> l2=new ArrayList<>();//what's the inferred type of the RHS ? : Mgr
+l1=l2;//javac err
+Object o=new Mgr();//up casting
+ArrayList<Object> l3=new ArrayList<>();//what's the inferred type of the RHS ? : Object
+l3=l2;//javac err
+l3=l1;//javac err
+
+What does it imply ?
+Does inheritance in generics work in the same manner as learnt earlier ? NO
+
+Wild card in generics comes to the rescue!
+Enter "?"
+What is it ? 
+It's a wild card in generic syntax. Can be replaced by ANY type.
+
+Now what will happen ?
+ArrayList<?> l1=new ArrayList<>();//what's the implicit type of the RHS ? : Object
+ArrayList<Mgr> l2=new ArrayList<>();
+l1=l2;
+
+? : is referred to as un bounded wild card.
+
+Hands on
+Shuffle all the elements of the list randomly.
+Collections class Method
+public static void shuffle​(List<?> list)
+
+
+Add "computeSalary" method in Emp based hierarchy
+
+Solve : Create EmpUtils class .
+Add static method which can accept List of any type of emps(Emp /Mgr / SalesMgr / Worker/ TempWorker)
+& compute salary.
+Test it from Tester class .
+
+
+Example of bounded wild card in generics
+
+1. public ArrayList(Collection<? extends E> c)
+eg : ArrayList<Emp> emps=new AL<>(c);
+c : AL/LL/Vector/HS/LHS/TS
+of the generic type : Emp or it's sub type
+
+Generic syntax :
+? : wild card in generic syntax (it can be replaced by ANY type) : un bounded wild card
+extends : Represents upper bound
+super : Represents lower bound
+? extends E : ANY type E or its sub type 
+? super E : E or its super type
+
+2.Collections class(Non generic class) :  Can contain a generic Method
+eg : super keyword in generics : lower bound
+Method of Collections class
+public static <T> void sort(List<T> list,Comparator<? super T> c)
+generic method : 
+where does type declaration fit ? : It's placed between method modifiers n ret type
+1st arg : List<T> list : You can pass List of ANY type (eg : AL/LL/Vector : ??
+HS/LHS/TS : ??
+HM/LHM/TM : ??) : 
+Can you pass List of the following types :  
+T --Customer , Student(extends Person) , BankAccount,Flight, Movie,Person , DacStudent (extends Student)
+if above classes have not imple Comparable or Comparator ????
+
+2nd arg : Comparator<? super T> c
+Instance of the class which imple Comparator
+eg : Collections.sort(studentList,comp);//comp : imple Comparator<Student> 
+ Collections.sort(studentList,comp);//comp : imple Comaprator<Fruit> 
+Collections.sort(studentList,comp);//comp : imple Comaprator<Person> 
+Collections.sort(studentList,comp);//comp : imple Comaprator<Object> 
+Collections.sort(studentList,comp);//comp : imple Comaprator<eDacStudent> 
+
+
+
+? : wild card (represents ANY unknown type) => un bounded wildcard
+
+extends => upper bound (type of the upper bound super class / interface)
+If your collection(list/set/map) is acting as a producer (of data) i.e while using retrieve operation, use upper bound
+eg : ? extends Number => Number or it's subtype (Byte,Short.....Double)
+get : type of the data that u get  Number or it's subtype
+Can be accessed using Number tpye of the ref.
+(Producer extends)
+
+super : lower bound
+? super T => T or it's super type
+Use it whenever your collection is acting as a consumer (data sink) : add
+(Consumer super)
+PECS
+
+
+More information : T vs ?
+What is the difference between a wildcard bound and a type parameter bound?
+A wildcard can have only one bound, while a type parameter can have several bounds. 
+A wildcard can have a lower or an upper bound, while there is no such thing as a lower bound for a type parameter. 
+
+Example (of type parameter bound and wildcard bound): 
+
+class Box< T extends Appendable & Flushable > {
+  private T theObject;
+  public Box(T arg)                { theObject = arg; } 
+  public Box(Box< ? extends T > box) { theObject = box.theObject; }
+  
+}
+

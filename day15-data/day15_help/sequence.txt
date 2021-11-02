@@ -1,0 +1,79 @@
+Today's Topics
+
+More in generic syntax(bounded wildcards)
+Sets overview & implementation classes
+Hashing algorithm
+Enter Maps
+
+Revision
+Custom ordering with anonymous inner class , w/o adding sorting criteria withing Book class
+Solve : Book : isbn,author,quantity,price,category
+Sort the books as per category(enum) & price.
+Given : LinkedList<Book> books=new LinkedList<>();
+books.add(b1)........
+
+In Tester
+Collections.sort(books,new Comparator<Book>() //instance of the class that imple Comparator<B>
+{
+  @Override
+  public int compare(Book b1,Book b2)
+  {
+    int retValue=b1.getCategory().compareTo(b2.getCategory());
+    if(retValue==0)
+     return ((Double)b1.getPrice()).compareTo(b2.getPrice());
+   return retValue;
+  }  
+});
+
+refer to "generic sequence" : More about generic syntax : ? , extends ,super
+1. Collections.shuffle
+API : public static void shuffle​(List<?> list)
+Create a fixed size list of Integers n shuffle it.
+List<Integer> list=Arrays.asList(1,2,3,4,5);
+Collections.shuffle(list);
+sop(list);//shuffled list
+
+
+2. Collections.reverse
+
+3. Write a static method in GenericUtils class : to print elements of ANY List(AL/LL/Vector) of ANY type(?)
+
+
+
+
+4. computeSalary from ANY List of ANY Emp 
+
+
+eg of bounded type in Collection Framework
+ArrayList<E> : generic class
+public ArrayList​(Collection<? extends E> c)
+E : Emp 
+? extends Emp
+Meaning : This ctor will create a non-empty AL of Emp type , from AL/LL/Vector/HS/LHS/TS (any Collection imple class) , from any type : Emp or it's sub type
+Q : Will you be able populate AL<Mgr> from 
+1. AL<Emp>
+2. HS<Worker>
+3. LL<SalesMgr>
+4. Vector<Fruit>
+5. TS<Object>
+6. LHS<HRMgr>
+Ans : 3 ,6
+
+
+1. Sets overview
+(refer to diagram : "Regarding Sets.png"
+
+2. HashSet & hashing algorithm
+
+3. LinkedHashSet & TreeSet
+
+4. Enter Maps
+Maps Overview
+----------------------------
+Example of strings having same hashcode
+Aa BB
+Ba CB 
+Ca DB
+Da EB
+BBBB AaBB AaAa BBAa
+FB Ea
