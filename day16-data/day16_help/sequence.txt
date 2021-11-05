@@ -1,0 +1,139 @@
+1. Revise hashing algorithm
+
+Why Hashing  ?
+
+Hashing is a technique to make things more efficient by effectively narrowing down the search 
+
+What is hashing?
+
+Hashing means using some function or algorithm to map object data to some representative integer value.
+
+This  hash code (or simply hash) can then be used as a way to narrow down our search when looking for the item in the hash-based data structure (eg : HashSet,LinkedHashSet,HashMap,LinkedHashMap,Hashtable...)
+
+If you want to add elements(refereneces) in hashing based data structure, which contract to be followed between hashCode n equals
+
+Mandatory : Equal objects MUST produce SAME hash code
+
+Optional BUT Recommended : Un equal objects SHOULD produce (for the improvemnt of hashtable) distinct hashcodes.
+
+HOW ?
+1. Identify PK n override equals
+2. Use same fields (PK) in generating hashcode
+Hint : Use prime nos in generation of hash codes
+ eg : String , Wrapper class(Integer,Double....) , Date , LocalDate....
+: Have already followed contract(both of the branches)
+
+
+2.Maps Overview
+
+Objective : 
+
+Create java app for simple book library
+ (Use Java 8 API : java.time.LocalDate)
+Book details : isbn(string),category(enum),price(double),publishDate(java.time.LocalDate),authorName(string),quantity(int)
+Unique ID : isbn
+
+To ensure const time performance for : CRUD n searching by PK , which is the most suitable data 
+structure ? HashMap<K,V>
+
+
+
+What will the generic type ? : HashMap<String,Book>
+
+
+Based upon hashing algo (uses : hashCode n equals)
+Which methods you will have to override to follow the contract , in your Book class?
+1. hashCode
+2. equals
+3. both
+4. NOA
+
+Ans : 4
+
+Create a pre-populated map with sample data.(put) : 5 entries
+Sample Data 
+book-0001 science 500 2020-12-03 Rama 10
+book-0009 fiction 400 2010-12-14 Kishor 20
+book-0003 science 1500 2021-01-3 Shubham 15
+book-0005 science 600 2018-11-25 Rama 12
+book-0004 health 700 2019-08-19 Rama 30
+Supply following options
+
+2.1 Add book.
+I/P Book ISBN
+doesn't exist --prompt for remaining book details
+exists -----prompt for qty 
+In case of a new book , store book details in the map.
+In case of duplicate title , just update the quantity
+
+2.2 Display All books in a library
+
+
+2.3 Issue out a book.
+i/p book isbn
+If the book is available , update the quantity suitably.
+
+
+2.4 Return a book
+i/p book isbn
+If the book is found , update the quantity suitably.
+
+
+2.5 Remove book
+i/p book isbn
+(Map : remove)
+
+2.6 Display book isbn for all books  by specific author n category
+
+2.7 Display book isbn , qty n price for books published after a specific date. 
+
+
+Java 8 New Features
+
+Java 8 Date/Time related APIs
+Java 8 New Features 
+java.time : new package is introduced
+LocalDate : Date (immutable)(yr-mon-day)  : inherently thrd safe.
+API 
+1. public static LocalDate now()
+Obtains the current date from the system clock in the default time-zone.
+eg : 
+LocalTime : Time (immutable)(hr-min-sec)  : inherently thrd safe.
+LocalDateTime : Date n Time :  inherently thrd safe.
+eg : ???
+2. public static LocalDate of(int year,int month,int dayOfMonth)
+Obtains an instance of LocalDate from a year, month and day.
+eg : ?????
+3. public static LocalDate parse(CharSequence text)
+Obtains an instance of LocalDate from a text string such as 2007-12-03.
+eg : LocalDate dt=parse(sc.next());//0 based dates
+4. Methods :
+isBefore,isAfter,isEqual
+5. Can you change default DateTime format ? : YES
+
+
+Refer to "java8_new_features.txt"
+(Pending!!!!)
+
+Refer to "regarding lambdas"
+
+Objectives
+
+1. Create your own functional interface n use it in lambda expression
+eg : Perform ANY arithmetic operation on 2 double values & return the result
+eg --add/multiply/subtract/divide....
+
+Explore Existing higher order functions
+
+2. Collection : forEach 
+
+3. Collection : removeIf
+
+4. Map : forEach
+
+5. Sorting : custom ordering
+
+
+
+
+
