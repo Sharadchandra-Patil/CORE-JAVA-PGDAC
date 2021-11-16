@@ -1,0 +1,89 @@
+Today's topics
+
+static methods in interface 
+Lambda expressions
+Java 8 Streams
+
+
+Revise 
+1. default keyword
+(Refer to "java8_new_features.txt")
+eg : Iterable i/f
+for internal iteration  : forEach
+eg : interface A
+{
+ default void show()
+ {
+   sop("in A's show");
+ }
+}
+ interface B
+{
+ default void show()
+ {
+   sop("in B's show");
+ }
+}
+class C implements A,B //javac err : ambiguity
+//how to remove javac err ?
+{
+@Override
+   public void show()
+ {
+   sop("in C's show");
+   //how to access A's show ?
+   A.super.show();
+ }
+}
+
+2. static methods
+
+3. Refer to "regarding lambdas"
+
+Objectives
+
+1. Create your own functional interface n use it in lambda expression
+eg : Perform ANY arithmetic operation on 2 double values & return the result
+eg --add/multiply/subtract/divide....
+1.1 Create i/f : SAM => Functional i/f
+1.2 Create an i/f : ComputationUtils :  to add a static method
+to return  result of  ANY operation performed on 2 double operands
+static  double performAnyOperation(double a,double b,Computable operation)
+{
+  return  operation.compute(a,b);
+}
+
+
+Explore Existing higher order functions(methods)
+
+2. Collection : forEach 
+
+3. Collection : removeIf
+
+4. Map : forEach
+
+5. Sorting : custom ordering
+
+6. Method references
+refer to "regarding method reference.txt"
+
+7. Using above API(higher order funcs) , can you chain 2 operations like sorting & displaying the sorted data ?
+OR
+Filter the elements n display filtered list. : NO
+Objective : Accept product category from user
+remove all products from specified category n display remaining list
+
+
+
+
+
+
+8. Enter Java 8 Streams
+8.1 Refer to <streams> : diagrams
+collections vs streams n streams basics
+8.2 Refer to "streams_sequence"
+
+
+
+
+

@@ -1,0 +1,34 @@
+ITC with Sleep : deadlock
+started thrd  -- Producer
+w entered --- Producer
+Write Data Emp [id=1, sal=100.0]
+w exited --- Producer
+Press enter to exit
+started thrd  -- Consumer
+r entered --- Consumer
+Read  Data Emp [id=1, sal=100.0]
+r exited --- Consumer
+r entered --- Consumer
+-----------------------------------
+ITC with wait 
+started thrd  -- Producer
+w entered --- Producer
+Write Data Emp [id=1, sal=100.0]
+w exited --- Producer
+Press enter to exit
+started thrd  -- Consumer
+r entered --- Consumer
+Read  Data Emp [id=1, sal=100.0]
+r exited --- Consumer
+r entered --- Consumer
+w entered --- Producer
+Write Data Emp [id=2, sal=200.0]
+w exited --- Producer
+w entered --- Producer
+--------------------------------
+
+
+
+
+
+

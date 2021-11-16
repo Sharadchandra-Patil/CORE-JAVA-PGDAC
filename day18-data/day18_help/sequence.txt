@@ -1,0 +1,107 @@
+Today's topics
+Java 8 Streams
+Enter Java I/O
+
+
+Revise
+Functional interfaces : i/f containing SAM + can optionally contain multiple default + static methods
+
+eg : Coparable, Comparator,Consumer,Supplier,Predicate,Runnable,BiConsumer....
+Annotation : @FunctionalInterface (since Java 8)
+package : java.util.function
+
+lambda expression : ano function to add conciseness to the code
+Can be passed as the arg to the higher order function(method)
+eg : forEach , removeIf,Collections.sort,List's sort
+Can be returned from the higher order function.
+Syntax : 
+(arg list) -> {body}
+
+Functional i/f ---can be directly substituted by lambda expression
+
+Function literal : assigning function defintion to a variable
+
+Solve :
+Display all emps(list) using declarative(func) style
+eg : empList.forEach(emp -> sop(emp));
+
+Display all emp details (map: <Integer,Emp>) using declarative(func) style
+eg : empMap.forEach((k,v) -> sop(v));
+
+Remove under performing emps from emp list
+Emp : id,name, sal,....performanceIndex(<7) : private , getters
+eg : empList.removeIf(e -> e.getPerfomanceIndex() < 7);//stateful operation => changes state of the i/p : emp list
+empList.forEach(emp -> sop(emp));
+
+
+Sort emps(list) as per salary (use function literal) : w/o touching emp class
+Comparator<Emp> comp=(e1,e2)->((Double)e1.getSalary()).compareTo(e2.getSalary());
+Collections.sort(empList,comp);
+empList.forEach(emp -> sop(emp));
+
+Is there any further shortcut to lambda expression ? : sometimes YES!
+(refer to "regarding method reference")
+eg : display emps from list
+empList.forEach(emp -> sop(emp)); //lambda expression
+empList.forEach(System.out::println);//method reference
+
+
+
+Objective : List<Integer> list=Arrays.asList(1,2,3,4,5,6,7);
+Display it's elems , first with lambda n then with method reference
+list.forEach(i -> sop(i));
+OR
+list.forEach(System.out::println);
+
+
+
+Display the integers on the same line , space separated
+lambda : list.forEach(i -> System.out.print(i+"  "));
+method ref : Not possible
+//display squares of these nums from the list
+lambda : list.forEach(i -> sop(i*i));
+Method Ref :  Not possible
+
+
+eg : Sort product details(list) as per price (asc) , w/o touching Product class (Product class is not Comparable)
+
+Using lambda expression
+eg : Collections.sort(productList,(p1,p2)->((Double)p1.getPrice()).compareTo(p2.getPrice()));
+
+
+OR
+Look at Comparator.comparing 
+eg : Collections.sort(productList,Comparator.comparing(p -> p.getPrice()));
+
+
+OR
+Use method reference 
+Collections.sort(productList,Comparator.comparing(Product::getPrice));
+
+
+Sort product details as per price (desc) : (lab work)
+
+Revise  Java 8 Functional streams
+Follow "streams sequence" 
+
+-------------------------------
+Enter I/O
+Objective : Read data from text file using buffer , till EOF(end of file) , display it.
+
+Objective : Copy files using buffer.
+i/p : src file name 
+dest file name
+
+Objective : Copy only lines from src file with length > 40 :  using buffer.
+i/p : src file name 
+dest file name
+
+Objective : Copy length of lines  from src file with line length > 40 :  using buffer.
+i/p : src file name 
+dest file name
+
+Objective : Take populated products(list) from sample data.
+Accept product category from user. 
+Filter out the products from the specified category 
+Sort them as per their category 
+Save sorted product details in a text file using buffer.
